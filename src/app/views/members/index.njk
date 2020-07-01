@@ -2,62 +2,50 @@
 
 {% block content %}
 
-    <div class="card table-container">
-            <div class="header">
-            <a href="/members/create" class="createInstructor">Novo</a>
-            <form action="/members" method="get">
-                <input 
-                type="text"
-                name="filter"
-                placeholder="Nome ou Email"
-                value="{{filter}}"
-                >
-                <button type="submit">Filtrar</button>
-            </form>
-            
-        </div>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="Table/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/css/util.css">
+    <link rel="stylesheet" type="text/css" href="Table/css/main.css">
+    <!--===============================================================================================-->
 
-        <table width="100%" class="members">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Membro</th>
-                    <th>Email</th>
-                    <th>Peso</th>
-                    <th>Altura</th>
-                    <th>Editar</th>
-                    <th>Excluir</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for member in members %}
-                    <tr>
-                        <td>
-                            <span style="background-image: url({{ member.avatar_url }})"></span>
-                        </td>
-                        <td>
-                            {{member.name}}
-                        </td>
-                        <td>{{member.email}}</td>
-                        <td>{{member.weight}}Kg</td>
-                        <td>{{member.height}}Cm</td>
-                        <td>
-                            <a href="/members/{{ member.id }}">
-                                <img src="https://img.icons8.com/fluent/48/000000/edit.png"/>
-                            </a>
-                        </td>
-                        <form id="form-delete" action="/members?_method=DELETE" method="post">
-                            <td>
-                                <input type="hidden" name="id" value={{member.id}}>
-                                <button style="cursor: pointer">
-                                    <img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"/>
-                                </button>
-                            </td>
-                        </form>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="limiter" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">Membro</th>
+                                <th class="column2">Email</th>
+                                <th class="column3">Peso</th>
+                                <th class="column4">Altura</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for member in members %}
+                                <tr>
+                                    <td>{{member.name}}</td>
+                                    <td>{{member.email}}</td>
+                                    <td>{{member.weight}}Kg</td>
+                                    <td>{{member.height}}Cm</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
 {% endblock content %}

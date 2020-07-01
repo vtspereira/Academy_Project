@@ -229,7 +229,7 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
-.members tbody tr td:first-child{
+.tableIndex tbody tr td:first-child{
     display: grid;
     grid-template-columns: 64px 1fr;
     align-items: center;

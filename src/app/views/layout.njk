@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    
-    {% block head %}
-    <title>Gym Manager</title>
+    <head>
 
+        {% block head %}
+            <title>Gym Manager</title>
 
-{% endblock %}
-<link rel="stylesheet" href="/styles.css">
+        {% endblock %}
+        <link rel="stylesheet" href="/styles.css">
 
-</head>
+    </head>
 
-
-<body>
-    <header>
+    {# <header>
         <div class="links">
             <a href="/instructors">Instructors</a>
             <a href="/members">Members</a>
@@ -24,8 +21,79 @@
 
     {% block content %}{% endblock %}
 
-    <script src="/script.js"></script>
+    <script src="/script.js"></script> #}
 
-</body>
+    <body>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="Layout/css/style.css">
 
-</html>
+        <div class="wrapper d-flex align-items-stretch">
+            <nav id="sidebar">
+                <div class="p-4 pt-5">
+                    <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(Layout/images/logo.jpg);"></a>
+                    <ul class="list-unstyled components mb-5">
+                        <li class="active">
+                            <a href="/instructors">Instrutores</a>
+                        </li>
+                        <li>
+                            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Membros</a>
+                            <ul class="collapse list-unstyled" id="pageSubmenu">
+                                <li>
+                                    <a href="/members">Membros</a>
+                                </li>
+                                <li>
+                                    <a href="#">Ficha técnica</a>
+                                </li>
+                                <li>
+                                    <a href="#">Mensalidade</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/equipments">Equipamentos</a>
+                        </li>
+                    </ul>
+
+                    {# <div class="footer">
+                        <p>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>
+                                document.write(new Date().getFullYear());
+                            </script>
+                            All rights reserved | This template is made with
+                            <i class="icon-heart" aria-hidden="true"></i>
+                            by
+                            <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div> #}
+
+                </div>
+            </nav>
+
+            <!-- Page Content -->
+            <div id="content" class="p-md-3">
+
+                <nav class="navbar-light">
+                    <div class="container-fluid">
+                        <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle Menu</span>
+                        </button>
+                    </nav>
+
+                    <div style="width: 100%; padding: 20px 30px"></div>
+
+                    {% block content %}{% endblock %}
+
+                    <script src="/script.js"></script>
+                </div>
+            </div>
+
+            <script src="Layout/js/jquery.min.js"></script>
+            <script src="Layout/js/popper.js"></script>
+            <script src="Layout/js/bootstrap.min.js"></script>
+            <script src="Layout/js/main.js"></script>
+        </body>
+
+    </html>
