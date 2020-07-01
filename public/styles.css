@@ -197,8 +197,6 @@ a.button {
     border-spacing: 0;
 }
 
-
-
 .createInstructor {
     background-color: var(--primary-color);
     padding: 9px 32px;
@@ -303,3 +301,5 @@ td:last-child {
     align-items: center;  
     width: 100%;
 }
+
+
