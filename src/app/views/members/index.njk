@@ -1,0 +1,63 @@
+{% extends "layout.njk" %}
+
+{% block content %}
+
+    <div class="card table-container">
+            <div class="header">
+            <a href="/members/create" class="createInstructor">Novo</a>
+            <form action="/members" method="get">
+                <input 
+                type="text"
+                name="filter"
+                placeholder="Nome ou Email"
+                value="{{filter}}"
+                >
+                <button type="submit">Filtrar</button>
+            </form>
+            
+        </div>
+
+        <table width="100%" class="members">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Membro</th>
+                    <th>Email</th>
+                    <th>Peso</th>
+                    <th>Altura</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for member in members %}
+                    <tr>
+                        <td>
+                            <span style="background-image: url({{ member.avatar_url }})"></span>
+                        </td>
+                        <td>
+                            {{member.name}}
+                        </td>
+                        <td>{{member.email}}</td>
+                        <td>{{member.weight}}Kg</td>
+                        <td>{{member.height}}Cm</td>
+                        <td>
+                            <a href="/members/{{ member.id }}">
+                                <img src="https://img.icons8.com/fluent/48/000000/edit.png"/>
+                            </a>
+                        </td>
+                        <form id="form-delete" action="/members?_method=DELETE" method="post">
+                            <td>
+                                <input type="hidden" name="id" value={{member.id}}>
+                                <button style="cursor: pointer">
+                                    <img src="https://img.icons8.com/fluent/48/000000/delete-sign.png"/>
+                                </button>
+                            </td>
+                        </form>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}
