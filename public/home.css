@@ -57,6 +57,8 @@
   -webkit-transform: translateY(80px);
           transform: translateY(80px);
   opacity: 0;
+  max-height: calc(110vh);
+  overflow-y: auto;
 }
 
 .modal-button:hover {

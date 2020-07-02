@@ -15,7 +15,8 @@ module.exports = {
         } else {
             Member.all(function(members) {
                 return res.render("members/index", { members })
-            })   
+            })
+      
         }
 
     },

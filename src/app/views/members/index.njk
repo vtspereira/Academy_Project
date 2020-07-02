@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    <button class="createInstructor">Adicionar</button>
+
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="Table/images/icons/favicon.ico"/>
     <!--===============================================================================================-->
@@ -48,4 +50,140 @@
         </div>
     </div>
 
+    <link rel="stylesheet" href="home.css">
+
+    <div class="modal">
+        <div class="modal-container">
+            <form class="card" method="POST" action="/instructors">
+                <div class="modal-left">
+                    <h1 class="modal-title">Novo Instrutor!</h1>
+                    <div class="input-block">
+                        <label for="avatar_url" class="input-label">Avatar URL</label>
+                        <input type="url" name="avatar_url" placeholder="http://" value="{{ instructor.avatar_url }}">
+                    </div>
+                    <div class="input-block">
+                        <label for="text" class="input-label">Instrutor</label>
+                        <input type="text" name="name" placeholder="Nome do instrutor" value="{{ instructor.name }}">
+                    </div>
+                    <div class="input-block">
+                        <label for="text" class="input-label">Data de Nascimento</label>
+                        <input type="date" name="birth" value="{{ instructor.birth }}">
+
+                    </div>
+                    <div class="input-radio">
+                        <div>
+                            <label for="text" class="input-label">Sexo</label>
+                        </div>
+                        <div class="test-radio">
+                            <span><input type="radio" name="gender" value="M" {% if instructor.gender == 'M' %} checked="checked" {% endif %}>Masculino</span>
+                            <span><input type="radio" name="gender" value="F" {% if instructor.gender == 'F' %} checked="checked" {% endif %}>Femenino</span>
+                        </div>
+
+                    </div>
+                    <div class="input-block">
+                        <label for="text" class="input-label">Área de atuação</label>
+                        <input type="text" name="services" placeholder="Separe os serviços prestados por vírgula" value="{{ instructor.services }}">
+
+                    </div>
+                    <div class="input-block">
+                        <label for="text" class="input-label">Tipo Sanguíneo</label>
+                        <div>
+                            <select name="blood">
+                                <option value="A+" {% if member.blood == "A+" %} selected="selected" {%endif%}>
+                                    A+
+                                </option>
+                                <option value="A-" {% if member.blood == "A-" %} selected="selected" {%endif%}>
+                                    A-
+                                </option>
+                                <option value="B+" {% if member.blood == "B+" %} selected="selected" {%endif%}>
+                                    B+
+                                </option>
+                                <option value="B-" {% if member.blood == "B-" %} selected="selected" {%endif%}>
+                                    B-
+                                </option>
+                                <option value="AB+" {% if member.blood == "AB+" %} selected="selected" {%endif%}>
+                                    AB+
+                                </option>
+                                <option value="AB-" {% if member.blood == "AB-" %} selected="selected" {%endif%}>
+                                    AB-
+                                </option>
+                                <option value="O+" {% if member.blood == "O+" %} selected="selected" {%endif%}>
+                                    O+
+                                </option>
+                                <option value="O-" {% if member.blood == "O-" %} selected="selected" {%endif%}>
+                                    O-
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-block">
+                        <label for="text" class="input-label">Peso (kg)</label>
+                        <input type="number" name="weight" value="{{ member.weight }}">
+                    </div>
+                    <div class="input-block">
+                        <label for="text" class="input-label">Altura (cm)</label>
+                        <input type="number" name="height" value="{{ member.height }}">
+                    </div>
+                    <div class="input-block">
+                        <label for="text" class="input-label">Instrutor</label>
+                            <select name="instructor">
+                                {% for member in memberOptions %}
+                                    <option value="{{instructor.id}}" {% if member.instructor_id == instructor.id %} selected="selected" {%endif%}>
+                                        {{member.instructors_name}}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="input-button close-button" type="button">Cancelar</button>
+                        <button class="input-button" type="submit">Salvar</button>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-right">
+                <img src="https://source.unsplash.com/collection/8353395/500x500" alt="">
+            </div>
+
+            <button class="icon-button close-button-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 50 50">
+                    <path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"></path>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const body = document.querySelector("body");
+        const modal = document.querySelector(".modal");
+        const modalButton = document.querySelector(".createInstructor");
+        const closeButton = document.querySelector(".close-button");
+        const closeButtonIcon = document.querySelector(".close-button-icon");
+        let isOpened = false;
+
+        const openModal = () => {
+            modal
+                .classList
+                .add("is-open");
+            body.style.overflow = "hidden";
+        };
+
+        const closeModal = () => {
+            modal
+                .classList
+                .remove("is-open");
+            body.style.overflow = "initial";
+        };
+
+        modalButton.addEventListener("click", openModal);
+        closeButton.addEventListener("click", closeModal);
+        closeButtonIcon.addEventListener("click", closeModal);
+
+        document.onkeydown = evt => {
+            evt = evt || window.event;
+            evt.keyCode === 27
+                ? closeModal()
+                : false;
+        };
+    </script>
 {% endblock content %}
