@@ -7,7 +7,7 @@ module.exports = {
 
         db.query(`SELECT * 
         FROM equipments 
-        ORDER BY priority ASC`, function (err, results) {
+        ORDER BY priority DESC`, function (err, results) {
              if (err) throw `Database Error! ${err}`
 
             callback(results.rows)
