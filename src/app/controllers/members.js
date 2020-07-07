@@ -6,18 +6,10 @@ module.exports = {
 
     index(req, res) {
 
-        const { filter } = req.query
-
-        if( filter ) {
-            Member.findBy(filter, function(members) {
-                    return res.render("members/index", { members, filter })
-            })
-        } else {
             Member.all(function(members) {
                 return res.render("members/index", { members })
             })
-      
-        }
+
 
     },
     create(req, res) {
@@ -37,7 +29,7 @@ module.exports = {
         }
 
         Member.create(req.body, function(member) {
-            return res.redirect(`/members/${member.id}`)
+            return res.redirect(`/members`)
         })
 
     },
@@ -59,9 +51,7 @@ module.exports = {
 
             member.birth = date(member.birth).iso
 
-            Member.instructorsSelectOptions(function(options){
-                return res.render("members/edit", { member, instructorOptions: options  })
-            })    
+            return res.render("members/edit", { member })  
         })   
 
     },
@@ -75,7 +65,7 @@ module.exports = {
         }
 
         Member.update(req.body, function() {
-            return res.redirect(`/members/${req.body.id}`)
+            return res.redirect(`/members`)
         })
 
     },

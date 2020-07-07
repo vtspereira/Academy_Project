@@ -2,7 +2,7 @@ const express = require('express')
 const routes = express.Router()
 const instructors = require('./app/controllers/instructors')
 const members = require('./app/controllers/members')
-// const equipments = require('./app/controllers/equipments')
+const equipments = require('./app/controllers/equipments')
 
 routes.get('/', function(req, res){
     return res.redirect("/instructors")
@@ -25,13 +25,13 @@ routes.post("/members", members.post)
 routes.put("/members", members.put)
 routes.delete("/members", members.delete)
 
-// routes.get('/equipments', equipments.index)
-// routes.get('/equipments/create', equipments.create)
-// routes.get('/equipments/:id',  equipments.show)
-// routes.get('/equipments/:id/edit',  equipments.edit)
-// routes.post("/equipments", equipments.post)
-// routes.put("/equipments", equipments.put)
-// routes.delete("/equipments", equipments.delete)
+routes.get('/equipments', equipments.index)
+routes.get('/equipments/create', equipments.create)
+routes.get('/equipments/:id',  equipments.show)
+routes.get('/equipments/:id/edit',  equipments.edit)
+routes.post("/equipments", equipments.post)
+routes.put("/equipments", equipments.put)
+routes.delete("/equipments", equipments.delete)
 
 
 module.exports = routes

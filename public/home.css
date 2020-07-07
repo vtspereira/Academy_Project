@@ -38,6 +38,24 @@
   -webkit-transform: translateY(100px) scale(0.4);
   transform: translateY(100px) scale(0.4);
 }
+
+.modal-equipment {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  background: #fff;
+  -webkit-transform: translateY(100px) scale(0.4);
+  transform: translateY(100px) scale(0.4);
+}
+
+
+
 .modal-title {
   font-size: 26px;
   margin: 0;
@@ -47,6 +65,7 @@
 .modal-desc {
   margin: 6px 0 30px 0;
 }
+
 .modal-left {
   padding: 60px 30px 80px;
   background: #fff;
@@ -60,6 +79,7 @@
   max-height: calc(110vh);
   overflow-y: auto;
 }
+
 
 .modal-button:hover {
   border-color: rgba(255, 255, 255, 0.2);
@@ -83,32 +103,6 @@
   -webkit-transition-duration: 1.2s;
           transition-duration: 1.2s;
 }
-.modal.is-open {
-  height: 100%;
-  background: rgba(51, 51, 51, 0.85);
-}
-.modal.is-open .modal-button {
-  opacity: 0;
-}
-.modal.is-open .modal-container {
-  opacity: 1;
-  -webkit-transition-duration: 0.6s;
-          transition-duration: 0.6s;
-  pointer-events: auto;
-  -webkit-transform: translateY(0) scale(1);
-          transform: translateY(0) scale(1);
-}
-.modal.is-open .modal-right img {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-}
-.modal.is-open .modal-left {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
-  opacity: 1;
-  -webkit-transition-delay: 0.1s;
-          transition-delay: 0.1s;
-}
 .modal-buttons {
   display: -webkit-box;
   display: flex;
@@ -120,15 +114,6 @@
 .modal-buttons a {
   color: rgba(51, 51, 51, 0.6);
   font-size: 14px;
-}
-
-.sign-up {
-  margin: 60px 0 0;
-  font-size: 14px;
-  text-align: center;
-}
-.sign-up a {
-  color: #8c7569;
 }
 
 .input-button {
@@ -143,6 +128,27 @@
   -webkit-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
+}
+
+.input-block textarea::-webkit-input-placeholder {
+  color: #ccc;
+  opacity: 1;
+}
+
+.input-block textarea {
+  font-size: 11px;
+  text-transform: uppercase;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  color: #8c7569;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border: none;
+}
+
+.input-block select {
+  border: none;
 }
 
 .input-button:first-child{

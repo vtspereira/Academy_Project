@@ -2,6 +2,187 @@
 
 {% block content %}
 
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="Table/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="Table/css/util.css">
+    <link rel="stylesheet" type="text/css" href="Table/css/main.css">
+    <!--===============================================================================================-->
+
+    <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#createInstructor" >Adicionar</button>
+
+    <div class="limiter" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table100">
+                    <table>
+                        <thead>
+                            <tr class="table100-head">
+                                <th>#</th>
+                                <th class="column1">Equipamento</th>
+                                <th class="column2">Observação</th>
+                                <th class="column3">Prioridade</th>
+                                <th class="column4">Instrutor</th>
+                                <th class="column5">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for equipment in equipments %}
+                                <tr >
+                                    <td id="codigo${{equipment.id}}">
+                                        {{equipment.id}}
+                                    </td>
+                                    <td id="codigo${{equipment.id}}">
+                                        {{equipment.name}}
+                                    </td>
+                                    <td id="codigo${{equipment.id}}">{{equipment.observation}}</td>
+                                    <td id="codigo${{equipment.id}}">{{equipment.priority}}</td>
+                                    <td id="codigo${{equipment.id}}">{{equipment.instructor_id}}</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="{{equipment.id}}" data-whatevernome="{{equipment.name}}" data-whateverdetalhes="{{equipment.observation}}" data-whateverprioridades="{{equipment.priority}}">Editar</button>
+                                                <svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-arrow-clockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
+                                                    <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
+                                                </svg>
+                                            </button>
+                                            <form id="form-delete" action="/equipments?_method=DELETE" method="post">
+                                                <button type="submit">
+                                                    <svg width="1em" height="1em" viewbox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h4 class="modal-title text-center">Editar Solicitação</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			  </div>
+			  <div class="modal-body">
+				 <form method="POST" action="/equipments?_method=PUT">
+				  <div class="form-group">
+					<label for="recipient-name" class="control-label">Nome:</label>
+					<input name="name" type="text" class="form-control" id="name">
+				  </div>
+				  <div class="form-group">
+					<label for="message-text" class="control-label">Detalhes:</label>
+					<textarea name="observation" class="form-control" id="observation"></textarea>
+				  </div>
+				  <div class="form-group">
+					<label for="message-text" class="control-label">Prioridade:</label>
+                    <select name="priority" id="priority">
+                            <option value="1" {% if equipment.priority == "1" %} selected="selected" {%endif%}>
+                                1
+                            </option>
+                            <option value="2" {% if equipment.priority == "2" %} selected="selected" {%endif%}>
+                                2
+                            </option>
+                            <option value="3" {% if equipment.priority == "3" %} selected="selected" {%endif%}>
+                                3
+                            </option>
+                        </select>
+				  </div>
+				<input name="id" type="hidden" class="form-control" id="id" value="">
+				
+				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+				<button type="submit" class="btn btn-danger">Alterar</button>
+			 
+				</form>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+
    
+        <div class="modal fade" id="createInstructor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="exampleModalLabel">Curso</h4>
+			  </div>
+			  <div class="modal-body">
+				 <form class="card" method="POST" action="/equipments">
+				  <div class="form-group">
+					<label for="equipamento" class="input-label">Equipamento</label>
+                    <input type="text" name="name" placeholder="Insira o nome do equipamento" value="{{ equipment.name }}">
+				  </div>
+				  <div class="form-group">
+					<label for="text" class="input-label">Observação</label>
+                    <textarea type="text-area" name="observation" placeholder="Deixe aqui a observação" value="{{ equipment.observation }}"></textarea>
+				  </div>
+				  <div class="form-group">
+					<label for="text" class="input-label">Prioridade</label>
+                        <select name="priority" id="priority">
+                            <option value="1" {% if equipment.priority == "1" %} selected="selected" {%endif%}>
+                                1
+                            </option>
+                            <option value="2" {% if equipment.priority == "2" %} selected="selected" {%endif%}>
+                                2
+                            </option>
+                            <option value="3" {% if equipment.priority == "3" %} selected="selected" {%endif%}>
+                                3
+                            </option>
+                        </select>
+				  </div>
+				<input name="id" type="hidden" class="form-control" id="id" value="">
+				
+				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
+				<button type="submit" class="btn btn-danger">Alterar</button>
+			 
+				</form>
+			  </div>
+			  
+			</div>
+		  </div>
+		</div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+    $('#exampleModal').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var recipient = button.data('whatever') // Extract info from data-* attributes
+		  var recipientnome = button.data('whatevernome')
+		  var recipientdetalhes = button.data('whateverdetalhes')
+		  var recipientprioridades = button.data('whateverprioridades')
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var modal = $(this)
+          console.log(button.data('whatevernome'))
+		  modal.find('.modal-title').text('ID ' + recipient)
+		  modal.find('#id').val(recipient)
+		  modal.find('#name').val(recipientnome)
+		  modal.find('#observation').val(recipientdetalhes)
+		  modal.find('#priority').val(recipientprioridades)
+		  
+		})
+    </script>
+
 
 {% endblock content %}

@@ -185,35 +185,6 @@ tbody tr:hover {
   cursor: pointer;
 }
 
-.column1 {
-  width: 260px;
-  padding-left: 10px;
-}
-
-.column2 {
-  width: 160px;
-}
-
-.column3 {
-  width: 224px;
-}
-
-.column4 {
-  width: 110px;
-  text-align: center;
-}
-
-.column5 {
-  width: 170px;
-  text-align: right;
-}
-
-.column6 {
-  width: 222px;
-  text-align: right;
-  padding-right: 62px;
-}
-
 tbody tr td:first-child span{
   width: 48px;
   height: 48px;
@@ -224,6 +195,23 @@ tbody tr td:first-child span{
   box-shadow: 3px 1px 6px -4px black;
   border: 2px solid white;
 }
+
+tbody tr td button:first-child{
+  margin-right: 10px;
+}
+
+tbody tr td button{
+font-size: 1.3em;
+}
+
+tbody tr td a{
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: black;
+
+}
+
 
 @media screen and (max-width: 992px) {
   table {
@@ -238,6 +226,10 @@ tbody tr td:first-child span{
   table tbody tr {
     height: auto;
     padding: 37px 0;
+  }
+  table tbody tr td {
+    padding-left: 40% !important;
+    margin-bottom: 24px;
   }
   table tbody tr td {
     padding-left: 40% !important;
