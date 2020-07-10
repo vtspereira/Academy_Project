@@ -22,11 +22,8 @@ module.exports = {
                 gender,
                 email,
                 birth,
-                blood,
-                weight,
-                height,
-                instructor_id
-            ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+                password
+            ) VALUES ($1, $2, $3, $4, $5, $6)
             RETURNING id 
         `
         const values = [
@@ -35,10 +32,7 @@ module.exports = {
             data.gender,
             data.email,
             date(data.birth).iso,
-            data.blood,
-            data.weight,
-            data.height,
-            data.instructor
+            data.password
          ]
 
         db.query(query, values, function (err, results) {
@@ -80,11 +74,8 @@ module.exports = {
                 birth =($3),
                 gender =($4),
                 email =($5),
-                blood =($6),
-                weight =($7),
-                height =($8),
-                instructor_id =($9)
-            WHERE id = $10
+                password =($6)
+            WHERE id = $7
         `
 
         const values = [
@@ -93,10 +84,7 @@ module.exports = {
             date(data.birth).iso,
             data.gender,
             data.email,
-            data.blood,
-            data.weight,
-            data.height,
-            data.instructor,
+            data.password,
             data.id
         ]
 
@@ -113,11 +101,5 @@ module.exports = {
              return callback()
         })
     },
-    instructorsSelectOptions(callback) {
-        db.query(`SELECT name,id FROM instructors`, function(err, results){
-            if (err) throw `Database Error! ${err}`
-
-            callback(results.rows)
-        })
-    }
+    
 }

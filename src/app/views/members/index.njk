@@ -30,8 +30,7 @@
                             <tr class="table100-head">
                                 <th class="column1">Membro</th>
                                 <th class="column2">Email</th>
-                                <th class="column3">Peso</th>
-                                <th class="column4">Altura</th>
+                                <th class="column4">Senha</th>
                                 <th>Ações</th>
                             </tr>
                         </thead>
@@ -40,8 +39,7 @@
                                 <tr>
                                     <td>{{member.name}}</td>
                                     <td>{{member.email}}</td>
-                                    <td>{{member.weight}}Kg</td>
-                                    <td>{{member.height}}Cm</td>
+                                    <td>{{member.password}}</td>
                                     <td>
                                         <div class="btn-group">
 
@@ -108,43 +106,8 @@
 
                     </div>
                     <div class="input-block">
-                        <label for="text" class="input-label">Tipo Sanguíneo</label>
-                        <div>
-                            <select name="blood">
-                                <option value="A+" {% if member.blood == "A+" %} selected="selected" {%endif%}>
-                                    A+
-                                </option>
-                                <option value="A-" {% if member.blood == "A-" %} selected="selected" {%endif%}>
-                                    A-
-                                </option>
-                                <option value="B+" {% if member.blood == "B+" %} selected="selected" {%endif%}>
-                                    B+
-                                </option>
-                                <option value="B-" {% if member.blood == "B-" %} selected="selected" {%endif%}>
-                                    B-
-                                </option>
-                                <option value="AB+" {% if member.blood == "AB+" %} selected="selected" {%endif%}>
-                                    AB+
-                                </option>
-                                <option value="AB-" {% if member.blood == "AB-" %} selected="selected" {%endif%}>
-                                    AB-
-                                </option>
-                                <option value="O+" {% if member.blood == "O+" %} selected="selected" {%endif%}>
-                                    O+
-                                </option>
-                                <option value="O-" {% if member.blood == "O-" %} selected="selected" {%endif%}>
-                                    O-
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="input-block">
-                        <label for="text" class="input-label">Peso (kg)</label>
-                        <input type="number" name="weight" value="{{ member.weight }}">
-                    </div>
-                    <div class="input-block">
-                        <label for="text" class="input-label">Altura (cm)</label>
-                        <input type="number" name="height" value="{{ member.height }}">
+                        <label for="text" class="input-label">Senha</label>
+                        <input type="password" name="password" placeholder="Insira o dia e mês do nascimento do cliente" value="{{ member.password }}">
                     </div>
 
                     <div class="modal-buttons">
